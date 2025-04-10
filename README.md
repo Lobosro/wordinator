@@ -10,7 +10,7 @@
 </div>
 
 ## License 🧑‍⚖️
-This project is using the CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International) that is availble on LICENSE
+This project is using the GPL3 (GNU General Public Licence 3) that is availble on LICENSE
 
 ## Advanteges of using 😉
 1. It's fun
