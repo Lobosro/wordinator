@@ -3,10 +3,21 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 int main(){
+	char maindir[10] = "/usr/share/wordinator"; // SETTING THE DEPENDECIES DIR ON "." CHANGE IF NEEDED
+	// GETTING A FILE NAME
+	char *lang = getenv("LANG"); // GETTING LANG
+	char filename[440];
+	sprintf(filename, "%s/lang/%s.lang", maindir, lang);
+	// CONFIRMING THAT THE FILENAME EXISTS AND IF NOT PUT IT ON FALLBACK
+	if(access(filename, F_OK) != 0){
+		sprintf(filename, "%s/lang/pt_PT.UTF-8.lang", maindir);
+	}
+
 	//CONFIG
-	char *palavras[] = { /* TODO: PUT THIS ON A JSON WITH A .LANG EXTENTION AND MAKE THIS READ THE LANGUAGE IN LINUX
+	char *palavras[] = { /* TODO: PUT THIS ON A JSON WITH A .LANG EXTENTION // DONE --> AND MAKE THIS READ THE LANGUAGE IN LINUX
 			      USING THE $LANG ENVIORMENT VARIABLE. EG OF LANG FILES en_US.UTF-8.lang / pt_PT.UTF-8 */
 		"BANANA",
 		"TRABALHO",
