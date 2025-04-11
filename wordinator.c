@@ -6,7 +6,8 @@
 
 int main(){
 	//CONFIG
-	char *palavras[] = {
+	char *palavras[] = { /* TODO: PUT THIS ON A JSON WITH A .LANG EXTENTION AND MAKE THIS READ THE LANGUAGE IN LINUX
+			      USING THE $LANG ENVIORMENT VARIABLE. EG OF LANG FILES en_US.UTF-8.lang / pt_PT.UTF-8 */
 		"BANANA",
 		"TRABALHO",
 		"SAMUEL",
