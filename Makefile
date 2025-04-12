@@ -1,4 +1,4 @@
-wordinator: wordinator.c
+wordinator: wordinator.c libs/jsonw.c
 	mkdir -p build
 	gcc wordinator.c libs/jsonw.c -o build/wordinator
 
