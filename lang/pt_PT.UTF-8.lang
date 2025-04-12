@@ -4,5 +4,5 @@
 	"two":{"\n\nParabéns ACERTASTE de Primeira\n"},
 	"three":{"\n\nParabéns ACERTASTE em %d tentativas\n"},
 	"four":{"\nERRASTE %d/%d tentativas restantes\nDica: %da letra = %c\n"},
-	"five":{""\n\nGAME-OVER\nA Palavra era: %s\n""},
+	"five":{"\n\nGAME-OVER\nA Palavra era: %s\n"},
 }
