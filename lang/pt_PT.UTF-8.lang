@@ -1,0 +1,8 @@
+{
+	"words":{"BANANA","TRABALHO","SAMUEL","PESSOA","ANIMAL","FELICIDADE","OBRA","TRISTEZA","INFERNO","ESTRELA","PANELA","GRIPE","CARRO","GIRAR","BONITO","FEIO","ELIAS","COMPUTADOR"},
+	"one":{"Qual é a palavra que tem %d letras? "},
+	"two":{"\n\nParabéns ACERTASTE de Primeira\n""},
+	"three":{"\n\nParabéns ACERTASTE em %d tentativas\n"},
+	"four":{"\nERRASTE %d/%d tentativas restantes\nDica: %da letra = %c\n"},
+	"five":{""\n\nGAME-OVER\nA Palavra era: %s\n""},
+}
