@@ -1,6 +1,6 @@
 wordinator: wordinator.c
 	mkdir -p build
-	gcc wordinator.c -o build/wordinator
+	gcc wordinator.c libs/jsonw.c -o build/wordinator
 
 clean:
 	rm -f build/*

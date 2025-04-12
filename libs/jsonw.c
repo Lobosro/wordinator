@@ -4,8 +4,8 @@
 char* cleardata(const char *data){
 	size_t len = strlen(data);
 	char *full = malloc(len);
-	strcpy(full, data + 1);
-	full[strlen(full) - 1] = '\0';
+	strcpy(full, data + 2);
+	full[strlen(full) - 2] = '\0';
 	return full;
 }
 

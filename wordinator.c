@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include "libs/jsonw.h"
 
 char* discoverlangpath(char *maindir){
 	// GETTING A FILE NAME
@@ -26,7 +27,6 @@ int main(){
 	else{
 		langpath = discoverlangpath("/usr/share/wordinator");
 	}
-
 	//CONFIG
 	char *palavras[] = { /* TODO: PUT THIS ON A JSON WITH A .LANG EXTENTION // DONE --> AND MAKE THIS READ THE LANGUAGE IN LINUX
 			      USING THE $LANG ENVIORMENT VARIABLE. EG OF LANG FILES en_US.UTF-8.lang / pt_PT.UTF-8 */
