@@ -23,4 +23,4 @@ This project is using the GPL3 (GNU General Public Licence 3) that is availble o
 3. `wordinator` Use this to open the game
 
 
-wordinator  Copyright (C) 2024 Elias Feliciano
+wordinator  Copyright (C) 2025 Elias Feliciano
