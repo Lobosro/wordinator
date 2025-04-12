@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 int main(){
-	char maindir[10] = "/usr/share/wordinator"; // SETTING THE DEPENDECIES DIR ON "." CHANGE IF NEEDED
+	char maindir[30] = "/usr/share/wordinator"; // SETTING THE DEPENDECIES DIR : CHANGE IF NEEDED
 	// GETTING A FILE NAME
 	char *lang = getenv("LANG"); // GETTING LANG
 	char filename[440];
