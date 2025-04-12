@@ -5,15 +5,26 @@
 #include <time.h>
 #include <unistd.h>
 
-int main(){
-	char maindir[30] = "/usr/share/wordinator"; // SETTING THE DEPENDECIES DIR : CHANGE IF NEEDED
+char* discoverlangpath(char *maindir){
 	// GETTING A FILE NAME
 	char *lang = getenv("LANG"); // GETTING LANG
-	char filename[440];
+	char *filename;
 	sprintf(filename, "%s/lang/%s.lang", maindir, lang);
 	// CONFIRMING THAT THE FILENAME EXISTS AND IF NOT PUT IT ON FALLBACK
 	if(access(filename, F_OK) != 0){
 		sprintf(filename, "%s/lang/pt_PT.UTF-8.lang", maindir);
+	}
+	return filename;
+}
+
+int main(){
+	// DOING THIS SO THE PROGRAM CAN BE RUNNED EVEN IF IT'S NOT INSTALLED
+	char *langpath;
+	if(access(discoverlangpath("/usr/share/wordinator"), F_OK) != 0){
+		langpath = discoverlangpath("."); // BECAUSE DOING THIS WE KNOW THAT IT'S NOT INSTALLED
+	}
+	else{
+		langpath = discoverlangpath("/usr/share/wordinator");
 	}
 
 	//CONFIG

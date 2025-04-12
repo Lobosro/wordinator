@@ -1,0 +1,1 @@
+char* cleardata(char *data);
