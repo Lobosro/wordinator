@@ -60,20 +60,20 @@ int main(){
 	char pensamento[maxtentativas+1]; // DECLARA PENSAMENTO PARA main()
 
 	for(int i=1; i<=maxtentativas; i++){ // VERIFICA SE O NUMERO DE TENTATIVAS NÃO É MAIOR DO QUE PREMITIDO
-		printf("Qual é a palavra que tem %d letras? ", maxtentativas); // PERGUNTA AO JOGADOR
+		printf(cleardata(readjson(langpath,3)), maxtentativas); // PERGUNTA AO JOGADOR
 		scanf("%s",&pensamento ); // LÊ A TENTATIVA DE ADVINHAÇÃO
 		if(sizeof(pensamento)>maxtentativas+1){return 6;}
 		for(int j = 0;pensamento[j] != '\0'; j++){pensamento[j] = toupper(pensamento[j]);} // DEIXA TUDO EM MAIUSCULAS
 		if(strcmp(pensamento, palavra) ==  0){ // VERIFICA SE A RESPOSTA TÁ CORRETA
 			if(i == 1){
-				printf("\n\nParabéns ACERTASTE de Primeira\n"); // FEEDBACK DE ACERTO
+				printf("%s",cleardata(readjson(langpath,4))); // FEEDBACK DE ACERTO
 				return 0; // FECHA O JOGO
 			}
-			printf("\n\nParabéns ACERTASTE em %d tentativas\n", i); // FEEDBACK DE ACERTO
+			printf(cleardata(readjson(langpath,5)),i); // FEEDBACK DE ACERTO
 			return 0; // FECHA O JOGO
 	}
-		printf("\nERRASTE %d/%d tentativas restantes\nDica: %da letra = %c\n", maxtentativas-i, maxtentativas, i, palavra[i-1]); // FEEDBACK DE ERRO
+		printf(cleardata(readjson(langpath,6)), maxtentativas-i, maxtentativas, i, palavra[i-1]); // FEEDBACK DE ERRO
 }
-	printf("\n\nGAME-OVER\nA Palavra era: %s\n", palavra); // GAME-OVER
+	printf(cleardata(readjson(langpath,7)), palavra); // GAME-OVER
 	return 0; // FECHA O JOGO
 }
