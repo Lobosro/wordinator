@@ -62,7 +62,6 @@ int main(int argc, char *argv[]){
 					debug = 1;
 					break;
 				default:
-					printf("Invalid Flag");
 					break;
 			}
 		}
@@ -115,7 +114,7 @@ int main(int argc, char *argv[]){
 	for(int i=1; i<=maxtentativas; i++){ // VERIFICA SE O NUMERO DE TENTATIVAS NÃO É MAIOR DO QUE PREMITIDO
 		char *line = readjson(langpath, 3);
 		if (!line) {
-		    printf(RED "[FATAL] No Language File Found!!\n" RESET);
+		    printf(RED "[ERROR][FATAL] No Language File Found!!\n" RESET);
 		    return 1;
 		}
 		printf(line, maxtentativas); // ASKS THE PLAYER

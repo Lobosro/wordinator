@@ -13,7 +13,7 @@ else
 	ASSETS_DIR := /usr/share/wordinator
 endif
 
-install:
+install: wordinator
 	sudo cp build/wordinator $(BIN_DIR)
 ifeq ($(UNAME_S),Darwin)
 		mkdir -p $(ASSETS_DIR)
@@ -27,7 +27,7 @@ else
 endif
 	@echo "Wordinator was correctly installed!"
 
-update:
+update: wordinator
 	sudo rm -f /usr/local/bin/wordinator
 ifeq ($(UNAME_S),Darwin)
 	rm -rf $(HOME)/Library/Application\ Support/wordinator
