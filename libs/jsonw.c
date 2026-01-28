@@ -70,3 +70,59 @@ char* cleardata(const char *data){
     return copy;
 }
 
+char* readjson_raw(const char *filename, int line){
+    FILE *fp = fopen(filename, "r");
+    if (!fp) return NULL;
+
+    char buffer[1024];
+    int current = 0;
+
+    while (fgets(buffer, sizeof(buffer), fp)) {
+        current++;
+        if (current == line) break;
+    }
+    fclose(fp);
+
+    if (current != line) return NULL;
+
+    buffer[strcspn(buffer, "\n")] = 0;
+    return strdup(buffer); // caller dá free
+}
+
+char** load_words(const char *line, int *count){
+    *count = 0;
+    if (!line) return NULL;
+
+    const char *start = strchr(line, '{');
+    const char *end   = strrchr(line, '}');
+    if (!start || !end || end <= start) return NULL;
+
+    start++; // pula {
+
+    char *tmp = strndup(start, end - start);
+    if (!tmp) return NULL;
+
+    // contar palavras
+    for (char *p = tmp; *p; p++)
+        if (*p == '"') (*count)++;
+    *count /= 2;
+
+    char **words = malloc(sizeof(char*) * (*count));
+    if (!words) { free(tmp); return NULL; }
+
+    int i = 0;
+    char *tok = strtok(tmp, ",");
+    while (tok) {
+        char *a = strchr(tok, '"');
+        char *b = strrchr(tok, '"');
+        if (a && b && b > a) {
+            *b = 0;
+            words[i++] = strdup(a + 1);
+        }
+        tok = strtok(NULL, ",");
+    }
+
+    free(tmp);
+    return words;
+}
+

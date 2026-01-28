@@ -79,32 +79,25 @@ int main(int argc, char *argv[]){
 		langpath = discoverlangpath(get_default_langpath());;
 	}
 	if(debug){printf(YELLOW "[DEBUG] LANGPATH %s\n" RESET, langpath);}
-	//CONFIG
-	char *palavras[] = { /* TODO: PUT THIS ON A JSON WITH A .LANG EXTENTION // DONE --> AND MAKE THIS READ THE LANGUAGE IN LINUX
-			      USING THE $LANG ENVIORMENT VARIABLE. EG OF LANG FILES en_US.UTF-8.lang / pt_PT.UTF-8 */
-		"BANANA",
-		"TRABALHO",
-		"SAMUEL",
-		"PESSOA",
-		"ANIMAL",
-		"FELICIDADE",
-		"OBRA",
-		"TRISTEZA",
-		"INFERNO",
-		"ESTRELA",
-		"PANELA",
-		"GRIPE",
-		"CARRO",
-		"GIRAR",
-		"BONITO",
-		"FEIO",
-		"ELIAS",
-		"COMPUTADOR"
-	};
+	
+	//WORDS LIST CHARGING
+	char *line = readjson_raw(langpath, 2);
+	if (!line) {
+	    printf(RED "[ERROR][FATAL] Can't find the lang file\n");
+	    return 1;
+	}
 
-	int sarray = sizeof(palavras) / sizeof(palavras[0]);
+	int total_words = 0;
+	char **palavras = load_words(line, &total_words);
+	free(line);
+
+	if (!palavras || total_words == 0) {
+	    printf("[ERROR][FATAL] File doesn't have words\n");
+	    return 1;
+	}
+
 	srand(time(NULL));
-	int r = rand() % sarray;
+	int r = rand() % total_words;
 	char *palavra = palavras[r]; // TEM DE SER TUDO MAIUSCULAS
 
 	int maxtentativas; // DECLARA A MAXTENTATIVAS PARA main()
