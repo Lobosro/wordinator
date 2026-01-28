@@ -3,41 +3,51 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* readjson(char *filename, int line){
-	// READ FILE
-	FILE *pF = fopen(filename, "r"); // SETS THE FOPEN
-	char buffer[255]; // MAKES A BUFFER
-	for(int i = 1; i <= line; i++){ // USES THIS TO FIND THE CORRECT LINE
-		fgets(buffer, 255, pF);
-	}
-	// DATA SIMPLYFING
-	// BLOCK 1 REMOVES EVERYTHING AFTER INCLUDING }
-	int g;
-	for(g = 0; buffer[g] != '}'; g++);
-	char semi[g];
-	for(int f=0; buffer[f] != '}'; f++){
-		semi[f] = buffer[f];
-	}
-	// BLOCK 2 REMOVES EVERYTHING BEFORE INCLUDING { 
-	int h;
-	for(h = 0;semi[h] != '{'; h++);
-	char full[g-h];
-	for(int w = g;semi[w] != '{'; w--){
-		full[w-h-1] = semi[w];
-	}
-	// BLOCK 3 MAKE FULL RETURNABLE BY COPYING INTO FINAL
-	size_t len = strlen(full);
-	char *final = malloc(len+1);
-	strcpy(final, full);
+char* readjson(const char *filename, int line){
+    if (!filename || line <= 0) return NULL;
 
-	return final;
+    FILE *pF = fopen(filename, "r");
+    if (!pF) return NULL;
+
+    char buffer[512];
+    int current = 0;
+    while (fgets(buffer, sizeof(buffer), pF)) {
+        current++;
+        if (current == line) break;
+    }
+    fclose(pF);
+
+    if (current != line) return NULL;
+
+    // Procura o primeiro { depois dos dois pontos
+    char *colon = strchr(buffer, ':');
+    if (!colon) return NULL;
+    char *start = strchr(colon, '"'); // primeira aspas
+    if (!start) return NULL;
+    start++; // pula a primeira aspas
+
+    char *end = strchr(start, '"'); // próxima aspas
+    if (!end) return NULL;
+    *end = '\0';
+
+    char *final = malloc(strlen(start)+1);
+    if (!final) return NULL;
+    strcpy(final, start);
+
+    return final;
 }
 
+
 char* cleardata(const char *data){
-	size_t len = strlen(data);
-	char *full = malloc(len);
-	strcpy(full, data + 1);
-	full[strlen(full) - 1] = '\0';
-	return full;
+    if (!data) return NULL;
+    size_t len = strlen(data);
+    if (len < 2) return NULL; // nada para limpar
+
+    char *copy = malloc(len - 1); // remove 1 char de cada lado
+    if (!copy) return NULL;
+
+    strncpy(copy, data + 1, len - 2);
+    copy[len - 2] = '\0';
+    return copy;
 }
 
