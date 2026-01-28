@@ -2,7 +2,7 @@
 	"words":{"BANANA","TRABALHO","SAMUEL","PESSOA","ANIMAL","FELICIDADE","OBRA","TRISTEZA","INFERNO","ESTRELA","PANELA","GRIPE","CARRO","GIRAR","BONITO","FEIO","ELIAS","COMPUTADOR"},
 	"one":{"What is the word that has %d letters? "},
 	"two":{"\n\nLet's go you've won in one try\n"},
-	"three":{"\n\You've won in %d tries\n"},
+	"three":{"\n\nYou've won in %d tries\n"},
 	"four":{"\nWRONG you have %d/%d tries left\nTip: the %d letter is %c\n"},
 	"five":{"\n\nGAME-OVER\nThe answer was: %s\n"},
 }
