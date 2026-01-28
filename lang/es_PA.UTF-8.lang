@@ -1,0 +1,8 @@
+{
+	"words": {"PLÁTANO","MANZANA","NARANJA","FRESA","TRABAJO","EMPLEO","CARRERA","PERSONA","HUMANO","ANIMAL","FELICIDAD","ALEGRÍA","TRISTEZA","IRA","AMISTAD","AMOR","ODIO","LIBERTAD","JUSTICIA","CONOCIMIENTO","SABIDURÍA","ORDENADOR","TECLADO","MONITOR","INTERNET","PROGRAMACIÓN","LENGUAJE","CIENCIA","HISTORIA","MÚSICA","ARTE","MOVIMIENTO","ROTACIÓN","VEHÍCULO","AUTOMÓVIL","HERMOSO","FEO","ESTRELLA","PLANETA","UNIVERSO"},
+	"one": {"¿Cuál es la palabra que tiene %d letras? "},
+	"two": {"\n\n¡Vamos, has ganado en un intento!\n"},
+	"three": {"\n\nHas ganado en %d intentos\n"},
+	"four": {"\nINCORRECTO, te quedan %d/%d intentos\nConsejo: la %d letra es %c\n"},
+	"five": {"\n\nFIN DEL JUEGO\nLa respuesta era: %s\n"}
+}

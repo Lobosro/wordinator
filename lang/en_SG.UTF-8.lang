@@ -1,0 +1,8 @@
+{
+	"words":{"BANANA","APPLE","ORANGE","STRAWBERRY","WORK","JOB","CAREER","PERSON","HUMAN","ANIMAL","HAPPINESS","JOY","SADNESS","ANGER","FRIENDSHIP","LOVE","HATRED","FREEDOM","JUSTICE","KNOWLEDGE","WISDOM","COMPUTER","KEYBOARD","MONITOR","INTERNET","PROGRAMMING","LANGUAGE","SCIENCE","HISTORY","MUSIC","ART","MOVEMENT","ROTATION","VEHICLE","AUTOMOBILE","BEAUTIFUL","UGLY","STAR","PLANET","UNIVERSE"},
+	"one":{"What is the word that has %d letters? "},
+	"two":{"\n\nLet's go you've won in one try\n"},
+	"three":{"\n\nYou've won in %d tries\n"},
+	"four":{"\nWRONG you have %d/%d tries left\nTip: the %d letter is %c\n"},
+	"five":{"\n\nGAME-OVER\nThe answer was: %s\n"},
+}
