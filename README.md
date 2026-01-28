@@ -14,7 +14,7 @@ This project is using the GPL3 (GNU General Public Licence 3) that is availble o
 
 ## Advantages of using 😉
 1. It's fun
-2. Why are you want more advanteges it's a game
+2. Why are you want more advantages it's a game
 
 ## How to install 👈
 
