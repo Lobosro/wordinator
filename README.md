@@ -12,7 +12,7 @@
 ## License 🧑‍⚖️
 This project is using the GPL3 (GNU General Public Licence 3) that is availble on LICENSE
 
-## Advanteges of using 😉
+## Advantages of using 😉
 1. It's fun
 2. Why are you want more advanteges it's a game
 
@@ -23,4 +23,4 @@ This project is using the GPL3 (GNU General Public Licence 3) that is availble o
 3. `wordinator` Use this to open the game
 
 
-wordinator  Copyright (C) 2025 Elias Feliciano
+wordinator  Copyright (C) 2026 Elias Feliciano
