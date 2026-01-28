@@ -7,6 +7,17 @@
 #include <getopt.h>
 #include "libs/jsonw.h"
 
+const char* get_default_langpath() {
+#if defined(__APPLE__) && defined(__MACH__)
+    static char path[1024];
+    const char *home = getenv("HOME");
+    snprintf(path, sizeof(path), "%s/Library/Application Support/wordinator", home);
+    return path;
+#elif
+    return "/usr/share/wordinator";
+#endif
+}
+
 char* discoverlangpath(const char *maindir){
     char *lang = getenv("LANG");
     if (!lang) lang = "pt_PT.UTF-8";
@@ -58,11 +69,11 @@ int main(int argc, char *argv[]){
 	if(debug){printf("[DEBUG] LANG: %s\n", getenv("LANG"));}
 	
 	char *langpath;
-	if(access(discoverlangpath("/usr/share/wordinator"), F_OK) != 0){
+	if(access(discoverlangpath(get_default_langpath()), F_OK) != 0){
 		langpath = discoverlangpath("."); // BECAUSE DOING THIS WE KNOW THAT IT'S NOT INSTALLED
 	}
 	else{
-		langpath = discoverlangpath("/usr/share/wordinator");
+		langpath = discoverlangpath(get_default_langpath());;
 	}
 	if(debug){printf("[DEBUG] LANGPATH %s\n", langpath);}
 	//CONFIG
