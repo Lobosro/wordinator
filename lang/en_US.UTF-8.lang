@@ -3,6 +3,6 @@
 	"one":{"What is the word that has %d letters? "},
 	"two":{"\n\nLet's go you've won in one try\n"},
 	"three":{"\n\You've won in %d tries\n"},
-	"four":{"\nERRASTE %d/%d tentativas restantes\nDica: %da letra = %c\n"},
-	"five":{"\n\nGAME-OVER\nA Palavra era: %s\n"},
+	"four":{"\nWRONG you have %d/%d tries left\nTip: the %d letter is %c\n"},
+	"five":{"\n\nGAME-OVER\nThe answer was: %s\n"},
 }
