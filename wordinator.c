@@ -7,6 +7,10 @@
 #include <getopt.h>
 #include "libs/jsonw.h"
 
+#define RED     "\x1b[31m"
+#define YELLOW  "\x1b[33m"
+#define RESET   "\x1b[0m"
+
 const char* get_default_langpath() {
 #if defined(__APPLE__) && defined(__MACH__)
     static char path[1024];
@@ -63,10 +67,10 @@ int main(int argc, char *argv[]){
 			}
 		}
 
-		if(debug){printf("[DEBUG] DEBUG MODE ACTIVATED\n");} // TELLING THE USER THAT HE IS IN DEBUG MODE
+		if(debug){printf(YELLOW "[DEBUG] DEBUG MODE ACTIVATED\n" RESET);} // TELLING THE USER THAT HE IS IN DEBUG MODE
 						  
 	// DOING THIS SO THE PROGRAM CAN BE RUNNED EVEN IF IT'S NOT INSTALLED
-	if(debug){printf("[DEBUG] LANG: %s\n", getenv("LANG"));}
+	if(debug){printf(YELLOW "[DEBUG] LANG: %s\n" RESET, getenv("LANG"));}
 	
 	char *langpath;
 	if(access(discoverlangpath(get_default_langpath()), F_OK) != 0){
@@ -75,7 +79,7 @@ int main(int argc, char *argv[]){
 	else{
 		langpath = discoverlangpath(get_default_langpath());;
 	}
-	if(debug){printf("[DEBUG] LANGPATH %s\n", langpath);}
+	if(debug){printf(YELLOW "[DEBUG] LANGPATH %s\n" RESET, langpath);}
 	//CONFIG
 	char *palavras[] = { /* TODO: PUT THIS ON A JSON WITH A .LANG EXTENTION // DONE --> AND MAKE THIS READ THE LANGUAGE IN LINUX
 			      USING THE $LANG ENVIORMENT VARIABLE. EG OF LANG FILES en_US.UTF-8.lang / pt_PT.UTF-8 */
@@ -107,11 +111,11 @@ int main(int argc, char *argv[]){
 	int maxtentativas; // DECLARA A MAXTENTATIVAS PARA main()
 	for(int h=0;palavra[h] != '\0';h++){maxtentativas = h+1;} // DEFINE O VALOR DE MAXTENTATIVAS
 	char pensamento[maxtentativas+1]; // DECLARA PENSAMENTO PARA main()
- 	if(debug){printf("[DEBUG] Answer: %s\n", palavra);}
+ 	if(debug){printf(YELLOW "[DEBUG] Answer: %s\n" RESET, palavra);}
 	for(int i=1; i<=maxtentativas; i++){ // VERIFICA SE O NUMERO DE TENTATIVAS NÃO É MAIOR DO QUE PREMITIDO
 		char *line = readjson(langpath, 3);
 		if (!line) {
-		    printf("[FATAL] No Language File Found!!\n");
+		    printf(RED "[FATAL] No Language File Found!!\n" RESET);
 		    return 1;
 		}
 		printf(line, maxtentativas); // ASKS THE PLAYER
