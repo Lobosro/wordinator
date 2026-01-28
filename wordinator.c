@@ -17,7 +17,7 @@ const char* get_default_langpath() {
     const char *home = getenv("HOME");
     snprintf(path, sizeof(path), "%s/Library/Application Support/wordinator", home);
     return path;
-#elif
+#else
     return "/usr/share/wordinator";
 #endif
 }
