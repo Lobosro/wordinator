@@ -114,17 +114,14 @@ int main(int argc, char *argv[]){
 		    printf("[FATAL] No Language File Found!!\n");
 		    return 1;
 		}
-		printf(line, maxtentativas); // segura
-		free(line); // sempre liberar
-
-		
-		printf(readjson(langpath,3), maxtentativas); // PERGUNTA AO JOGADOR
+		printf(line, maxtentativas); // ASKS THE PLAYER
+		free(line);
 		scanf("%s",pensamento); // LÊ A TENTATIVA DE ADVINHAÇÃO
 		if(sizeof(pensamento)>maxtentativas+1){return 6;}
 		for(int j = 0;pensamento[j] != '\0'; j++){pensamento[j] = toupper(pensamento[j]);} // DEIXA TUDO EM MAIUSCULAS
 		if(strcmp(pensamento, palavra) ==  0){ // VERIFICA SE A RESPOSTA TÁ CORRETA
 			if(i == 1){
-				printf("%s",readjson(langpath,4)); // FEEDBACK DE ACERTO
+				printf(readjson(langpath,4)); // FEEDBACK DE ACERTO
 				return 0; // FECHA O JOGO
 			}
 			printf(readjson(langpath,5),i); // FEEDBACK DE ACERTO

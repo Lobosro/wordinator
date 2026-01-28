@@ -3,7 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* readjson(const char *filename, int line){
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* readjson(const char *filename, int line) {
     if (!filename || line <= 0) return NULL;
 
     FILE *pF = fopen(filename, "r");
@@ -11,6 +15,7 @@ char* readjson(const char *filename, int line){
 
     char buffer[512];
     int current = 0;
+
     while (fgets(buffer, sizeof(buffer), pF)) {
         current++;
         if (current == line) break;
@@ -19,9 +24,10 @@ char* readjson(const char *filename, int line){
 
     if (current != line) return NULL;
 
-    // Procura o primeiro { depois dos dois pontos
+    // Procura o primeiro : depois da chave
     char *colon = strchr(buffer, ':');
     if (!colon) return NULL;
+
     char *start = strchr(colon, '"'); // primeira aspas
     if (!start) return NULL;
     start++; // pula a primeira aspas
@@ -30,12 +36,25 @@ char* readjson(const char *filename, int line){
     if (!end) return NULL;
     *end = '\0';
 
-    char *final = malloc(strlen(start)+1);
+    // Aloca memória para a string final, já com escape processado
+    size_t len = strlen(start);
+    char *final = malloc(len + 1); // tamanho máximo inicial
     if (!final) return NULL;
-    strcpy(final, start);
+
+    char *dst = final;
+    for (char *src = start; *src; src++) {
+        if (*src == '\\' && *(src+1) == 'n') {
+            *dst++ = '\n'; // substitui literal \n por newline
+            src++;         // pula o 'n'
+        } else {
+            *dst++ = *src;
+        }
+    }
+    *dst = '\0';
 
     return final;
 }
+
 
 
 char* cleardata(const char *data){
