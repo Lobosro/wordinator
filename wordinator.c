@@ -103,12 +103,12 @@ int main(int argc, char *argv[]){
 	int r;
 	if(debug){
 		printf(YELLOW"[DEBUG] level = %d\n"RESET, level);
-		printf(YELLOW"[DEBUG] total_words - 1 = %d\n"RESET, total_words - 1);
-		if(level > total_words - 1){printf(YELLOW"[DEBUG] Level exceded the words count. Ignoring Level\n"RESET);}
+		printf(YELLOW"[DEBUG] total_words = %d\n"RESET, total_words);
+		if(level > total_words){printf(YELLOW"[DEBUG] Level exceded the words count. Ignoring Level\n"RESET);}
 	}
-	if(level && level <= total_words - 1){
+	if(level && level <= total_words){
 		if(debug){printf(YELLOW"[DEBUG] Specific Level Specified\n"RESET);}
-		r = level;
+		r = level-1;
 	} else {
 		if(debug){printf(YELLOW"[DEBUG] No Level Specified using random\n"RESET);}
 		srand(time(NULL));
