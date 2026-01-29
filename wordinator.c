@@ -49,17 +49,22 @@ int main(int argc, char *argv[]){
 		}
 	*/
 		int debug = 0;
+		int level = 0;
 
 		static struct option long_options[] =
 		{
 			{"debug", no_argument, 0, 'd'},
+			{"level",  required_argument, 0, 'l'},
 			{0, 0, 0, 0}
 		};
 		int opt;
-		while ((opt = getopt_long(argc, argv, "d", long_options, NULL)) != -1) {
+		while ((opt = getopt_long(argc, argv, "dl:", long_options, NULL)) != -1) {
 			switch(opt){
 				case 'd':
 					debug = 1;
+					break;
+				case 'l':
+					level = atoi(optarg);
 					break;
 				default:
 					break;
@@ -95,9 +100,20 @@ int main(int argc, char *argv[]){
 	    printf("[ERROR][FATAL] File doesn't have words\n");
 	    return 1;
 	}
-
-	srand(time(NULL));
-	int r = rand() % total_words;
+	int r;
+	if(debug){
+		printf(YELLOW"[DEBUG] level = %d\n"RESET, level);
+		printf(YELLOW"[DEBUG] total_words - 1 = %d\n"RESET, total_words - 1);
+		if(level >= total_words - 1){printf(YELLOW"[DEBUG] Level exceded the words count. Ignoring Level\n"RESET);}
+	}
+	if(level && level <= total_words - 1){
+		if(debug){printf(YELLOW"[DEBUG] Specific Level Specified\n"RESET);}
+		r = level;
+	} else {
+		if(debug){printf(YELLOW"[DEBUG] No Level Specified using random\n"RESET);}
+		srand(time(NULL));
+		r = rand() % total_words;
+	}
 	char *palavra = palavras[r]; // TEM DE SER TUDO MAIUSCULAS
 
 	int maxtentativas; // DECLARA A MAXTENTATIVAS PARA main()
