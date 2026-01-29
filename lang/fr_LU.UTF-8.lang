@@ -1,0 +1,9 @@
+{
+  "words": {"BANANE","POMME","ORANGE","FRAISE","TRAVAIL","EMPLOI","CARRIÈRE","PERSONNE","HUMAIN","ANIMAL","BONHEUR","JOIE","TRISTESSE","COLÈRE","AMITIÉ","AMOUR","HAINE","LIBERTÉ","JUSTICE","CONNAISSANCE","SAGESSE","ORDINATEUR","CLAVIER","ÉCRAN","INTERNET","PROGRAMMATION","LANGUE","SCIENCE","HISTOIRE","MUSIQUE","ART","MOUVEMENT","ROTATION","VÉHICULE","AUTOMOBILE","BEAU","LAID","ÉTOILE","PLANÈTE","UNIVERS"},
+  "one": {"Quel est le mot qui a %d lettres ? "},
+  "two": {"\n\nBravo ! Vous avez trouvé du premier coup !\n"},
+  "three": {"\n\nVous avez réussi en %d essais\n"},
+  "four": {"\nFAUX ! Il vous reste %d/%d essais\nConseil : la %dème lettre est %c\n"},
+  "five": {"\n\nFIN DU JEU\nLe mot était : %s\n"}
+}
+
