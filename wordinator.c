@@ -104,7 +104,7 @@ int main(int argc, char *argv[]){
 	if(debug){
 		printf(YELLOW"[DEBUG] level = %d\n"RESET, level);
 		printf(YELLOW"[DEBUG] total_words - 1 = %d\n"RESET, total_words - 1);
-		if(level >= total_words - 1){printf(YELLOW"[DEBUG] Level exceded the words count. Ignoring Level\n"RESET);}
+		if(level > total_words - 1){printf(YELLOW"[DEBUG] Level exceded the words count. Ignoring Level\n"RESET);}
 	}
 	if(level && level <= total_words - 1){
 		if(debug){printf(YELLOW"[DEBUG] Specific Level Specified\n"RESET);}
